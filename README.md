@@ -47,8 +47,6 @@ submit/
 메인 앱을 실행하려면 아래 명령어를 사용하세요:
 
 ```bash
-# 8000번 포트 할당
-cd app
 
 ## Host Agent LLM 설정 (default = openai/gpt)
 # server/host_agent/agent_config.json
@@ -59,6 +57,7 @@ echo "GOOGLE_API_KEY=your_api_key_here" > server/host_agent/.env
 # OpenAI 사용
 echo "OPENAI_API_KEY=your_api_key_here" > server/host_agent/.env
 
+# default port = 8000
 cd app
 uv run -- uvicorn main:app --reload
 ```
@@ -85,21 +84,24 @@ echo "OPENAI_API_KEY=your_api_key_here" > agents/{specific-agent}/.env
 ### 4.1 Itinerary Agent (brave mcp 연결)
 
 ```bash
+# default port = 10004
 echo "BRAVE_API_KEY=your_api_key_here" > agents/travel/itinerary-agent/.env
-uv run -m agents.travel.itinerary-agent --port {10004}
+uv run -m agents.travel.itinerary-agent --port {포트번호}
 ```
 
 ### 4.2 Airbnb Agent (airbnb mcp 연결)
 
 ```bash
-uv run -m agents.travel.airbnb-agent --port {10005}
+# default port = 10005
+uv run -m agents.travel.airbnb-agent --port {포트번호}
 ```
 
 ### 4.3 Location Agent (google map mcp 연결)
-a
+
 ```bash
+# default port = 10006
 echo "GOOGLE_MAPS_API_KEY=your_api_key_here" > agents/travel/location-agent/.env
-uv run -m agents.travel.location-agent --port {10006}
+uv run -m agents.travel.location-agent --port {포트번호}
 ```
 
 ---
