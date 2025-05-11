@@ -1,0 +1,34 @@
+[project]
+name = "my_a2a"
+version = "0.1.0"
+description = "A2A (Agent-to-Agent) Framework Implementation"
+requires-python = ">=3.12"
+dependencies = [
+    "httpx>=0.28.1",
+    "httpx-sse>=0.4.0",
+    "jwcrypto>=1.5.6",
+    "pydantic>=2.10.6",
+    "pyjwt>=2.10.1",
+    "sse-starlette>=2.2.1",
+    "starlette>=0.46.1",
+    "typing-extensions>=4.12.2",
+    "uvicorn>=0.34.0",
+    "fastapi>=0.110.0",
+    "google-generativeai>=0.3.2",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["server", "client", "app"]
+
+[tool.uv.workspace]
+members = [
+    "cli",
+    "samples/agentTemplate",
+    "server/host_agent",
+]
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[dependency-groups]
+dev = ["pytest>=8.3.5", "pytest-mock>=3.14.0", "ruff>=0.11.2"]

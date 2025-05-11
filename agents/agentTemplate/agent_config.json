@@ -1,0 +1,24 @@
+{
+    "agent": {
+      "model": "gemini-1.5-flash",
+      "name": "agent_template",
+      "description": "A template agent",
+      "instruction": "You are a template agent."
+    },
+    "skill": {
+      "id": "agent_template",
+      "name": "Agent Template",
+      "description": "A template agent",
+      "examples": ["Hello, how are you?", "I'm fine, thank you!"],
+      "inputModes": ["text"],
+      "outputModes": ["text"]
+    },
+    "agent_card": {
+      "name": "Agent Template",
+      "description": "A template agent",
+      "version": "1.0.0",
+      "capabilities": {
+        "streaming": true
+      }
+    }
+}

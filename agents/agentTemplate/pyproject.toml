@@ -1,0 +1,20 @@
+[project]
+name = "my_a2a_agent"
+version = "0.1.0"
+description = "Sample Google ADK-based hosted as an A2A server." 
+requires-python = ">=3.12"
+dependencies = [
+    "my_a2a",
+    "click>=8.1.8",
+    "python-dotenv>=1.1.0",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["."]
+
+[tool.uv.sources]
+my_a2a = { workspace = true }
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"

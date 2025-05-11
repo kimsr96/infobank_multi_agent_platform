@@ -1,0 +1,62 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Infobank Multi-Agent Platform</title>
+    <link rel="stylesheet" href="/static/chat.css">
+    <script type="module" src="/static/js/main.js"></script>
+  </head>
+
+  <body>
+    <div id="sidebar-wrapper">
+      <button id="sidebar-toggle">☰ Agents</button>
+      <div id="sidebar" class="closed">
+        <ul id="agent-list"></ul>
+        <form id="add-agent-form" style="display: none; margin-top: 10px;">
+          <input type="text" id="new-agent-url" placeholder="http://localhost:10000" required>
+          <button type="submit">확인</button>
+          <button type="button" id="cancel-add-agent">취소</button>
+        </form>
+        <button id="show-add-agent-form" class="primary-btn">Add Agent</button>
+      </div>
+    </div>
+    <div id="chat-container">
+      <div id="main-panel">
+        <div class="message-controls">
+          <label><input type="checkbox" id="show-task" checked> Agent Messages</label>
+        </div>
+        <div id="messages"></div>
+        <form id="messageForm">
+          <label for="message"></label>
+          <input type="text" id="message" name="message" />
+          <button type="submit" id="sendButton" disabled>Send</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Add Agent Modal -->
+    <div id="add-agent-modal" class="modal-overlay" style="display:none;">
+      <div class="modal-content">
+        <h3>Add Agent</h3>
+        <form id="add-agent-form-modal">
+          <input type="text" id="new-agent-url-modal" placeholder="http://localhost:10000" required>
+          <div class="modal-btns">
+            <button type="submit" id="preview-agent-btn">확인</button>
+            <button type="button" id="cancel-add-agent-modal">취소</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Agent Card Preview Modal -->
+    <div id="agent-card-modal" class="modal-overlay" style="display:none;">
+      <div class="modal-content">
+        <h3>Agent Card Preview</h3>
+        <pre id="agent-card-preview" style="background:#f7faff; border-radius:8px; padding:10px; font-size:13px; color:#333; max-height:300px; overflow:auto;"></pre>
+        <div class="modal-btns">
+          <button id="add-agent-confirm-btn">추가</button>
+          <button id="cancel-agent-card-modal" type="button">취소</button>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
