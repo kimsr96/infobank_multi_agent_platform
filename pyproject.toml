@@ -15,6 +15,8 @@ dependencies = [
     "uvicorn>=0.34.0",
     "fastapi>=0.110.0",
     "google-generativeai>=0.3.2",
+    "google-adk>=0.3.0",
+    "litellm>=1.69.0",
 ]
 
 [tool.hatch.build.targets.wheel]

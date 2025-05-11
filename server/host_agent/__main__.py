@@ -3,13 +3,25 @@ import click
 import asyncio
 from .adk_host_manager import ADKHostManager
 from a2a_types import Message, TextPart
+from dotenv import load_dotenv
+load_dotenv()
 
 @click.command()
 @click.option("--agent", multiple=True, default=[
     ], help="Base URL of the A2A agent server. Use multiple times for multiple agents.")
 
 def main(agent):
-    api_key = os.environ.get("GOOGLE_API_KEY", "")
+    agent_config = os.path.join(os.path.dirname(__file__), "agent_config.json")
+    with open(agent_config, "r") as f:
+        config = json.load(f)
+    if config['model'].startswith('gemini'):
+        api_key = os.getenv("GOOGLE_API_KEY")
+        if api_key is None:
+            raise ValueError("GOOGLE_API_KEY is not set")
+    elif config['model'].startswith('openai'):
+        api_key = os.getenv("OPENAI_API_KEY")
+        if api_key is None:
+            raise ValueError("OPENAI_API_KEY is not set")
     host_manager = ADKHostManager(api_key)
     for agent_url in agent:
         try:
