@@ -63,8 +63,8 @@ class ADKHostManager(ApplicationManager):
     self._host_agent = HostAgent([], self.task_callback)
     self.user_id = "adk_host_manager"
     self.app_name = "A2A"
-    self.api_key = api_key or os.environ.get("GOOGLE_API_KEY", "")
-      
+    self.api_key = api_key
+    
     self._initialize_host()
     self._task_map = {}
     self._next_id = {} 
@@ -72,7 +72,6 @@ class ADKHostManager(ApplicationManager):
   def update_api_key(self, api_key: str):
     if api_key and api_key != self.api_key:
       self.api_key = api_key
-      os.environ["GOOGLE_API_KEY"] = api_key
       self._initialize_host()
 
   def _initialize_host(self):

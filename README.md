@@ -50,13 +50,15 @@ submit/
 # 8000번 포트 할당
 cd app
 
-## Host Agent LLM 설정
- 
+## Host Agent LLM 설정 (default = openai/gpt)
+# server/host_agent/agent_config.json
+
 # Gemini 사용
 echo "GOOGLE_API_KEY=your_api_key_here" > agents/{specific-agent}/.env
 
 # OpenAI 사용
 echo "OPENAI_API_KEY=your_api_key_here" > agents/{specific-agent}/.env
+
 uv run -- uvicorn main:app --reload
 ```
 
@@ -65,6 +67,9 @@ uv run -- uvicorn main:app --reload
 ## 3. 에이전트 실행법 (How to Run Agents)
 
 ```bash
+#Agent LLM Model 설정 (default = openai/gpt)
+agents/{specific-agent}/agent_config.json
+
 # 아래에서 your_api_key_here 부분을 실제 API 키로 교체하세요.
 
 # Gemini 사용
