@@ -54,11 +54,12 @@ cd app
 # server/host_agent/agent_config.json
 
 # Gemini 사용
-echo "GOOGLE_API_KEY=your_api_key_here" > agents/{specific-agent}/.env
+echo "GOOGLE_API_KEY=your_api_key_here" > server/host_agent/.env
 
 # OpenAI 사용
-echo "OPENAI_API_KEY=your_api_key_here" > agents/{specific-agent}/.env
+echo "OPENAI_API_KEY=your_api_key_here" > server/host_agent/.env
 
+cd app
 uv run -- uvicorn main:app --reload
 ```
 
@@ -84,7 +85,7 @@ echo "OPENAI_API_KEY=your_api_key_here" > agents/{specific-agent}/.env
 ### 4.1 Itinerary Agent (brave mcp 연결)
 
 ```bash
-echo "BRAVE_API_KEY=your_api_key_here" > agents.travel.itinerary-agent/.env
+echo "BRAVE_API_KEY=your_api_key_here" > agents/travel/itinerary-agent/.env
 uv run -m agents.travel.itinerary-agent --port {10004}
 ```
 
@@ -97,7 +98,7 @@ uv run -m agents.travel.airbnb-agent --port {10005}
 ### 4.3 Location Agent (google map mcp 연결)
 a
 ```bash
-echo "GOOGLE_MAPS_API_KEY=your_api_key_here" > agents.travel.location-agent/.env
+echo "GOOGLE_MAPS_API_KEY=your_api_key_here" > agents/travel/location-agent/.env
 uv run -m agents.travel.location-agent --port {10006}
 ```
 

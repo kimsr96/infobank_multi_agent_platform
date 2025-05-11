@@ -64,15 +64,9 @@ class ADKHostManager(ApplicationManager):
     self.user_id = "adk_host_manager"
     self.app_name = "A2A"
     self.api_key = api_key
-    
     self._initialize_host()
     self._task_map = {}
     self._next_id = {} 
-
-  def update_api_key(self, api_key: str):
-    if api_key and api_key != self.api_key:
-      self.api_key = api_key
-      self._initialize_host()
 
   def _initialize_host(self):
     agent = self._host_agent.create_agent()
